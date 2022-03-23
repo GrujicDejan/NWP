@@ -1,0 +1,21 @@
+.product-item {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.product-item .datails {
+    text-align: center;
+    font-size: 30px;
+}
+
+.sale {
+    background-color: greenyellow; 
+}
+
+.product-item .datails button {
+    margin: 10px;
+    font-size: 30px;
+    width: 40px;
+}
