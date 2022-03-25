@@ -20,3 +20,11 @@
 .negative {
     color: red;
 }
+
+.large-change {
+    font-size: 1.8em;
+}
+
+.small-change {
+    font-size: 1.2em;
+}
