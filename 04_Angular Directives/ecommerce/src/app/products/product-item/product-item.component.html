@@ -10,7 +10,7 @@
                 <div>{{product.name}}</div>
                 <div>{{product.price}} RSD</div>
                 <div>
-                    <button [disabled]="product.quantity == 0" (click)="decreaseQuantity()">-</button>
+                    <button *ngIf="product2.quantity > 0" (click)="decreaseQuantity()">-</button>
                     <span>{{product.quantity}}</span>
                     <button (click)="increaseQuantity()">+</button>
                 </div>
@@ -25,7 +25,7 @@
                 <div>{{product2.name}}</div>
                 <div>{{product2.price}} RSD</div>
                 <div>
-                    <button [disabled]="product2.quantity == 0" (click)="decreaseQuantity()">-</button>
+                    <button *ngIf="product2.quantity > 0" (click)="decreaseQuantity()">-</button>
                     <span>{{product2.quantity}}</span>
                     <button (click)="increaseQuantity()">+</button>
                 </div>
@@ -40,7 +40,7 @@
                 <div>{{product3.name}}</div>
                 <div>{{product3.price}} RSD</div>
                 <div>
-                    <button [disabled]="product3.quantity == 0" (click)="decreaseQuantity()">-</button>
+                    <button *ngIf="product2.quantity > 0" (click)="decreaseQuantity()">-</button>
                     <span>{{product3.quantity}}</span>
                     <button (click)="increaseQuantity()">+</button>
                 </div>
