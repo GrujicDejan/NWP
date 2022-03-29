@@ -12,7 +12,15 @@ export class ProductItemComponent implements OnInit {
   public product2!: Product;
   public product3!: Product;
 
+  public quantities!: Array<number>;
+
   constructor() {
+    this.quantities = [];
+
+    for (let i = 1; i <= 20; i++) {
+      this.quantities.push(i);
+    }
+
     this.product = {
       name: "Dog food",
       imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",

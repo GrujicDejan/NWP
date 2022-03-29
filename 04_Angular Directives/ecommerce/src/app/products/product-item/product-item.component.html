@@ -10,7 +10,14 @@
                 <div>{{product.name}}</div>
                 <div>{{product.price}} RSD</div>
                 <div>
-                    <button *ngIf="product2.quantity > 0" (click)="decreaseQuantity()">-</button>
+                    <select>
+                        <option [value] = "qty" *ngFor="let qty of quantities">
+                            {{qty}}
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <button *ngIf="product.quantity > 0" (click)="decreaseQuantity()">-</button>
                     <span>{{product.quantity}}</span>
                     <button (click)="increaseQuantity()">+</button>
                 </div>
@@ -24,6 +31,13 @@
             <div class="datails">
                 <div>{{product2.name}}</div>
                 <div>{{product2.price}} RSD</div>
+                <div>
+                    <select>
+                        <option [value] = "qty" *ngFor="let qty of quantities">
+                            {{qty}}
+                        </option>
+                    </select>
+                </div>
                 <div>
                     <button *ngIf="product2.quantity > 0" (click)="decreaseQuantity()">-</button>
                     <span>{{product2.quantity}}</span>
@@ -39,6 +53,13 @@
             <div class="datails">
                 <div>{{product3.name}}</div>
                 <div>{{product3.price}} RSD</div>
+                <div>
+                    <select>
+                        <option [value] = "qty" *ngFor="let qty of quantities">
+                            {{qty}}
+                        </option>
+                    </select>
+                </div>
                 <div>
                     <button *ngIf="product2.quantity > 0" (click)="decreaseQuantity()">-</button>
                     <span>{{product3.quantity}}</span>
