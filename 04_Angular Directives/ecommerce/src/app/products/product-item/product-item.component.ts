@@ -13,6 +13,7 @@ export class ProductItemComponent implements OnInit {
   public product3!: Product;
 
   public quantities!: Array<number>;
+  public products!: Array<Product>
 
   constructor() {
     this.quantities = [];
@@ -42,27 +43,33 @@ export class ProductItemComponent implements OnInit {
       isOnSale: true,
       quantity: 0
     }
+
+    this.products = [];
+    this.products.push(this.product);
+    this.products.push(this.product2);
+    this.products.push(this.product3);
+
   }
 
   ngOnInit(): void {
 
   }
 
-  increaseQuantity() {
-    this.product.quantity++;
+  increaseQuantity(i:number) {
+    this.products[i].quantity++;
   }
 
-  decreaseQuantity() {
-    if (this.product.quantity > 0) {
-      this.product.quantity--;
+  decreaseQuantity(i:number) {
+    if (this.products[i].quantity > 0) {
+      this.products[i].quantity--;
     }
   }
 
-  // setQuantity(val:any) {
+  // setQuantity(val:any, i:number) {
   //   this.product.quantity = val.value;
   // }
 
-  setQuantity(val: number) {
-    this.product.quantity = val;
+  setQuantity(val: number, i:number) {
+    this.products[i].quantity = val;
   }
 }
