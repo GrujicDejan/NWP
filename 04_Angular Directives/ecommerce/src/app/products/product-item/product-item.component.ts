@@ -45,7 +45,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   increaseQuantity() {
@@ -56,5 +56,13 @@ export class ProductItemComponent implements OnInit {
     if (this.product.quantity > 0) {
       this.product.quantity--;
     }
+  }
+
+  // setQuantity(val:any) {
+  //   this.product.quantity = val.value;
+  // }
+
+  setQuantity(val: number) {
+    this.product.quantity = val;
   }
 }
