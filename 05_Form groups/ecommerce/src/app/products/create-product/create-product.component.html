@@ -1,7 +1,7 @@
 <h3>Create new item</h3>
 
 <div>
-    <form #productForm="ngForm">
+    <form (ngSubmit)="createProduct(productForm)" #productForm="ngForm">
 
         <div ngModelGroup="product">
             <div>
@@ -9,7 +9,7 @@
             </div>
 
             <div class="error" *ngIf="productName.invalid && (productName.dirty || message)"> 
-                Product name is required
+                Product name is required.
             </div>
 
             <div>
@@ -17,7 +17,7 @@
             </div>
 
             <div class="error" *ngIf="productPrice.invalid && (productPrice.dirty || message)"> 
-                Product price is required
+                Product price is required.
             </div>
 
             <div>
@@ -25,9 +25,12 @@
                 pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
             </div>
 
-            <div class="error">
-                <div *ngIf="productImageURL.invalid && (productImageURL.dirty || message)">
-                    Product image URL is required
+            <div class="error" *ngIf="productImageURL.invalid && (productImageURL.dirty || message)">
+                <div *ngIf="productImageURL.hasError('required')">
+                    Product image URL is required.
+                </div>
+                <div *ngIf="productImageURL.hasError('pattern')">
+                    Product image URL is pattern wrong.
                 </div>
             </div>
 
@@ -35,6 +38,7 @@
                 <input type="checkbox" ngModel name="isOnSale" placeholder="IsOnSale">On sale
             </div>
         </div>
-        <button type="submit">Create</button>
+        <button type="submit">Create</button> <br>
+        {{message}}
     </form>
 </div>
