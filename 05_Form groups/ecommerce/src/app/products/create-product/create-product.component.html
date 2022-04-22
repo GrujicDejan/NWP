@@ -13,7 +13,11 @@
             </div>
 
             <div>
-                <input type="text" ngModel #productImageURL="ngModel" name="imageURL" placeholder="Product image URL" required>
+                <input type="text" ngModel #productImageURL="ngModel" name="imageURL" placeholder="Product image URL" required
+                pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{​​​​​​1,256}​​​​​​\.[a-zA-Z0-9()]{​​​​​​1,6}​​​​​​\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+
+
+
             </div>
 
             <div>
