@@ -1,1 +1,25 @@
-<p>create-product works!</p>
+<h3>Create new item</h3>
+
+<div>
+    <form #productForm="ngForm">
+
+        <div ngModelGroup="product">
+            <div>
+                <input type="text" ngModel #productName="ngModel" name="name" placeholder="Product name" required>
+            </div>
+
+            <div>
+                <input type="number" ngModel #productPrice="ngModel" name="price" placeholder="Product price" required>
+            </div>
+
+            <div>
+                <input type="text" ngModel #productImageURL="ngModel" name="imageURL" placeholder="Product image URL" required>
+            </div>
+
+            <div>
+                <input type="checkbox" ngModel name="isOnSale" placeholder="IsOnSale">On sale
+            </div>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</div>
