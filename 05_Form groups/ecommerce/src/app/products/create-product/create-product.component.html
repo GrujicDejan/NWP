@@ -8,16 +8,27 @@
                 <input type="text" ngModel #productName="ngModel" name="name" placeholder="Product name" required>
             </div>
 
+            <div class="error" *ngIf="productName.invalid && (productName.dirty || message)"> 
+                Product name is required
+            </div>
+
             <div>
                 <input type="number" ngModel #productPrice="ngModel" name="price" placeholder="Product price" required>
             </div>
 
+            <div class="error" *ngIf="productPrice.invalid && (productPrice.dirty || message)"> 
+                Product price is required
+            </div>
+
             <div>
                 <input type="text" ngModel #productImageURL="ngModel" name="imageURL" placeholder="Product image URL" required
-                pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{​​​​​​1,256}​​​​​​\.[a-zA-Z0-9()]{​​​​​​1,6}​​​​​​\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+                pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+            </div>
 
-
-
+            <div class="error">
+                <div *ngIf="productImageURL.invalid && (productImageURL.dirty || message)">
+                    Product image URL is required
+                </div>
             </div>
 
             <div>

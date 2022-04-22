@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateProductComponent implements OnInit {
 
+  message = '';
+
   constructor() { }
 
   ngOnInit(): void {
