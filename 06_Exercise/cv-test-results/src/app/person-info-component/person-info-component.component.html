@@ -85,12 +85,12 @@
             <div class="form-group">
                 <label for="inputAddress">Address line 1 (format: Strazilovska 6, Novi Sad)</label>
                 <input required type="text" class="form-control" #address1="ngModel" ngModel name="address1" 
-                    placeholder="Insert address line 1" pattern="([A-Z][a-z ]*)*[0-9]*[a-z]?, ([A-Z][a-z ]*)*"> 
+                    placeholder="Insert address line 1" pattern="([A-Z][a-z ]*)*[0-9]*[a-z]?, ?([A-Z][a-z ]*)*"> 
                 <div class="error" *ngIf="address1.invalid && (address1.dirty || message)">
-                    <div *ngIf="jobTittle.hasError('required')">
+                    <div *ngIf="address1.hasError('required')">
                         Address line 1 is required.
                     </div>
-                    <div *ngIf="jobTittle.hasError('pattern')">
+                    <div *ngIf="address1.hasError('pattern')">
                         Address line 1 is pattern wrong.
                     </div>
                 </div>
@@ -192,7 +192,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="container-fluid">
             <p>
                 {{person.summary}}
             </p>
