@@ -6,90 +6,178 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" ngModel name="firstName" placeholder="Insert first name...">
+                    <input required type="text" class="form-control" ngModel #firstName="ngModel" name="firstName" 
+                        placeholder="Insert first name..." pattern="[A-Z][a-z]{3,15}">
+                    <div class="error" *ngIf="firstName.invalid && (firstName.dirty || message)">
+                        <div *ngIf="firstName.hasError('required')">
+                            Frist name is required.
+                        </div>
+                        <div *ngIf="firstName.hasError('pattern')">
+                            Frist name is pattern wrong.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" ngModel name="lastName" placeholder="Insert last name...">
+                    <input required type="text" class="form-control" ngModel #lastName="ngModel" name="lastName" 
+                        placeholder="Insert last name..." pattern="[A-Z][a-z]{3,15}">
+                    <div class="error" *ngIf="lastName.invalid && (lastName.dirty || message)">
+                        <div *ngIf="lastName.hasError('required')">
+                            Last name is required.
+                        </div>
+                        <div *ngIf="lastName.hasError('pattern')">
+                            Last name is pattern wrong.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="imageURL">Image URL</label>
-                    <input type="text" class="form-control" ngModel name="imageURL" placeholder="Insert image URL...">
-                </div>
+                    <input type="text" class="form-control" ngModel #imageURL="ngModel" name="imageURL" placeholder="Insert image URL..."
+                        pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)">
+                        <div class="error" *ngIf="imageURL.hasError('pattern')">
+                            Image URL is pattern wrong.
+                        </div>
+                    </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-4">
                     <label for="email">E-mail</label>
-                    <input type="email" class="form-control" ngModel name="email" placeholder="Insert e-mail...">
+                    <input required type="email" class="form-control" #email="ngModel" ngModel name="email" placeholder="Insert e-mail..."
+                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                    <div class="error" *ngIf="email.invalid && (email.dirty || message)">
+                        <div *ngIf="email.hasError('required')">
+                            E-mail is required.
+                        </div>
+                        <div *ngIf="email.hasError('pattern')">
+                            E-mail is pattern wrong.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="linkedIn">LinkedIn profile URL</label>
-                    <input type="text" class="form-control" ngModel name="linkedIn" placeholder="Insert LinkedIn...">
+                    <input required type="text" class="form-control" #linkedIn="ngModel" ngModel name="linkedIn" placeholder="Insert LinkedIn..."
+                        pattern="(https://)?www.linkedin.com/in/[a-z]*-[a-z]*-[a-z0-9]*/?">
+                    <div class="error" *ngIf="linkedIn.invalid && (linkedIn.dirty || message)">
+                        <div *ngIf="linkedIn.hasError('required')">
+                            LinkedIn profile URL is required.
+                        </div>
+                        <div *ngIf="linkedIn.hasError('pattern')">
+                            LinkedIn profile URL is pattern wrong.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="jobTittle">Job tittle</label>
-                    <input type="text" class="form-control" ngModel name="jobTittle" placeholder="Insert job tittle...">
+                    <input required type="text" class="form-control" #jobTittle="ngModel" ngModel name="jobTittle" 
+                        placeholder="Insert job tittle..." pattern="[A-Za-z ]*">
+                    <div class="error" *ngIf="jobTittle.invalid && (jobTittle.dirty || message)">
+                        <div *ngIf="jobTittle.hasError('required')">
+                            Job tittle is required.
+                        </div>
+                        <div *ngIf="jobTittle.hasError('pattern')">
+                            Job tittle is pattern wrong.
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="inputAddress">Address line 1</label>
-                <input type="text" class="form-control" ngModel name="address1" placeholder="Insert address line 1">
+                <label for="inputAddress">Address line 1 (format: Strazilovska 6, Novi Sad)</label>
+                <input required type="text" class="form-control" #address1="ngModel" ngModel name="address1" 
+                    placeholder="Insert address line 1" pattern="([A-Z][a-z ]*)*[0-9]*[a-z]?, ([A-Z][a-z ]*)*"> 
+                <div class="error" *ngIf="address1.invalid && (address1.dirty || message)">
+                    <div *ngIf="jobTittle.hasError('required')">
+                        Address line 1 is required.
+                    </div>
+                    <div *ngIf="jobTittle.hasError('pattern')">
+                        Address line 1 is pattern wrong.
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="inputAddress2">Address line 2</label>
-                <input type="text" class="form-control" ngModel name="address2" placeholder="Insert address line 2">
+                <input type="text" class="form-control" ngModel #address2="ngModel" name="address2" placeholder="Insert address line 2"
+                    pattern="([A-Z][a-z ]*)*[0-9]*[a-z]?, ([A-Z][a-z ]*)*">
+                    <div class="error" *ngIf="address2.hasError('pattern')">
+                        Address line 2 is pattern wrong.
+                    </div>
             </div>
 
             <div class="form-group">
                 <label for="summary">Summary</label>
-                <textarea class="form-control" ngModel name="summary" rows="3"></textarea>
+                <textarea required class="form-control" ngModel #summary="ngModel" name="summary" rows="3"></textarea>
+                <div class="error" *ngIf="summary.invalid && (summary.dirty || message)">
+                    Summary is required.
+                </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="skill1">Skill 1</label>
-                    <input type="text" class="form-control" ngModel name="skills[0].name" placeholder="Insert skill...">
+                    <input required type="text" class="form-control" ngModel #skill1="ngModel" name="skills[0].name" placeholder="Insert skill...">
+                    <div class="error" *ngIf="skill1.invalid && (skill1.dirty || message)">
+                        Skill 1 is required.
+                    </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="knowledge1">Knowledge</label>
-                    <input type="number" class="form-control" ngModel name="skills[0].knowledge" placeholder="Insert knowledge...">
+                    <input required type="number" class="form-control" ngModel #knowledge1="ngModel" name="skills[0].knowledge" placeholder="Insert knowledge...">
+                    <div class="error" *ngIf="knowledge1.invalid && (knowledge1.dirty || message)">
+                        Knowledge 1 is required.
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="skill2">Skill 2</label>
-                    <input type="text" class="form-control" ngModel name="skills[1].name" placeholder="Insert skill...">
+                    <input required type="text" class="form-control" ngModel #skill2="ngModel" name="skills[1].name" placeholder="Insert skill...">
+                    <div class="error" *ngIf="skill2.invalid && (skill2.dirty || message)">
+                        Skill 2 is required.
+                    </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="knowledge2">Knowledge</label>
-                    <input type="number" class="form-control" ngModel name="skills[1].knowledge" placeholder="Insert knowledge...">
+                    <input required type="number" class="form-control" ngModel #knowledge2="ngModel" name="skills[1].knowledge" placeholder="Insert knowledge...">
+                    <div class="error" *ngIf="knowledge2.invalid && (knowledge2.dirty || message)">
+                        Knowledge 2 is required.
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="skill3">Skill 3</label>
-                    <input type="text" class="form-control" ngModel name="skills[2].name" placeholder="Insert skill...">
+                    <input required type="text" class="form-control" ngModel #skill3="ngModel" name="skills[2].name" placeholder="Insert skill...">
+                    <div class="error" *ngIf="skill3.invalid && (skill3.dirty || message)">
+                        Skill 3 is required.
+                    </div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="knowledge3">Knowledge</label>
-                    <input type="number" class="form-control" ngModel name="skills[2].knowledge" placeholder="Insert knowledge...">
+                    <input required type="number" class="form-control" ngModel #knowledge3="ngModel" name="skills[2].knowledge" placeholder="Insert knowledge...">
+                    <div class="error" *ngIf="knowledge3.invalid && (knowledge3.dirty || message)">
+                        Knowledge 3 is required.
+                    </div>
                 </div>
             </div>
             
             <br>
             <button type="submit" class="btn btn-primary">Add</button>
         </form>
+        <div class="message">
+            {{message}}
+        </div>
+        
     </div>
 </div>
 
+
 <hr>
 
-<body *ngIf="person !== undefined">
+<body *ngIf="!message && person !== undefined">
     <div class="columns-block container">
         <div class="content">
             <div class="row">

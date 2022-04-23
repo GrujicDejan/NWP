@@ -9,6 +9,7 @@ import { Person } from '../model/person';
 export class PersonInfoComponentComponent implements OnInit {
 
   person!: Person;
+  message = "";
 
   constructor() { }
 
@@ -24,5 +25,11 @@ export class PersonInfoComponentComponent implements OnInit {
     }
 
     console.log(this.person);
+
+    if (personForm.invalid) {
+      this.message = "Please correct all errors and try again";
+    } else {
+      this.message = "";
+    }
   }
 }
