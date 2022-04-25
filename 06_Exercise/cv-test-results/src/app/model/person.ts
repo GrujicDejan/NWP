@@ -10,5 +10,6 @@ export interface Person {
     linkedIn: string;
     address1: string;
     address2: string;
-    skills: Array<Skill>
+    skills: Array<Skill>;
+    year:number;
 }

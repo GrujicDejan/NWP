@@ -10,8 +10,19 @@ export class PersonInfoComponentComponent implements OnInit {
 
   person!: Person;
   message = "";
+  years!: Array<number>;
+  year!: number;
+  persons!: Array<Person>;
 
-  constructor() { }
+  constructor() { 
+    this.years = [];
+    this.persons = [];
+
+    for (let i = 18; i < 50; i++) {
+      this.years.push(i);
+    }
+
+  }
 
   ngOnInit(): void {
   }
@@ -29,7 +40,14 @@ export class PersonInfoComponentComponent implements OnInit {
     if (personForm.invalid) {
       this.message = "Please correct all errors and try again";
     } else {
+      this.person.year = this.year;
       this.message = "";
+      this.persons.push(this.person);
     }
   }
+
+  setYears(value:number) {
+    this.year = value;
+  }
+
 }
