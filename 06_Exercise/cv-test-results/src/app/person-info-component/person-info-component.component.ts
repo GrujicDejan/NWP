@@ -11,7 +11,7 @@ export class PersonInfoComponentComponent implements OnInit {
   person!: Person;
   message = "";
   years!: Array<number>;
-  year!: number;
+  year = 18;
   persons!: Array<Person>;
 
   constructor() { 
@@ -35,14 +35,18 @@ export class PersonInfoComponentComponent implements OnInit {
       this.person.skills.push({"name":personForm.value["skills[" + i + "].name"], "knowledge":personForm.value["skills[" + i + "].knowledge"]})
     }
 
-    console.log(this.person);
+    // console.log(this.person);
 
     if (personForm.invalid) {
       this.message = "Please correct all errors and try again";
     } else {
       this.person.year = this.year;
       this.message = "";
-      this.persons.push(this.person);
+
+      let p = Object.assign({}, this.person)
+      console.log(p);
+      
+      this.persons.push(p);
     }
   }
 
