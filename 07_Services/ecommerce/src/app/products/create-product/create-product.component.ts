@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import {Product} from '../model/product';
 
 @Component({
@@ -10,7 +11,7 @@ export class CreateProductComponent implements OnInit {
 
   message = '';
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
   }
@@ -19,10 +20,9 @@ export class CreateProductComponent implements OnInit {
     if (productForm.invalid) {
       this.message = "Please correct all errors and try again"
     } else {
-      let product : Product = productForm.value.product;
       console.log(productForm)
-      console.log(productForm.value)
-      console.log(product)
+      let product : Product = productForm.value.product;
+      this.productService.createProduct(product);
     }
   }
 

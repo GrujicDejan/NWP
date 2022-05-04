@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../model/product';
 
 @Component({
@@ -15,39 +16,43 @@ export class ProductItemComponent implements OnInit {
   public quantities!: Array<number>;
   public products!: Array<Product>
 
-  constructor() {
-    this.quantities = [];
+  constructor(ProductService: ProductService) {
+     this.quantities = [];
+
+    ProductService.getProducts().subscribe(
+      rez => this.products = rez
+    );
 
     for (let i = 1; i <= 20; i++) {
       this.quantities.push(i);
     }
 
-    this.product = {
-      name: "Dog food",
-      imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-      price: 300,
-      isOnSale: true,
-      quantity: 0
-    }
-    this.product2 = {
-      name: "Dog food 2",
-      imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-      price: 500,
-      isOnSale: false,
-      quantity: 0
-    }
-    this.product3 = {
-      name: "Dog food 3",
-      imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-      price: 400,
-      isOnSale: true,
-      quantity: 0
-    }
+    // this.product = {
+    //   name: "Dog food",
+    //   imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
+    //   price: 300,
+    //   isOnSale: true,
+    //   quantity: 0
+    // }
+    // this.product2 = {
+    //   name: "Dog food 2",
+    //   imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
+    //   price: 500,
+    //   isOnSale: false,
+    //   quantity: 0
+    // }
+    // this.product3 = {
+    //   name: "Dog food 3",
+    //   imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
+    //   price: 400,
+    //   isOnSale: true,
+    //   quantity: 0
+    // }
 
-    this.products = [];
-    this.products.push(this.product);
-    this.products.push(this.product2);
-    this.products.push(this.product3);
+    // this.products = [];
+    // this.products.push(this.product);
+    // this.products.push(this.product2);
+    // this.products.push(this.product3);
 
   }
 
