@@ -16,10 +16,10 @@ export class ProductItemComponent implements OnInit {
   public quantities!: Array<number>;
   public products!: Array<Product>
 
-  constructor(ProductService: ProductService) {
+  constructor(private productService: ProductService) {
      this.quantities = [];
 
-    ProductService.getProducts().subscribe(
+    productService.getProducts().subscribe(
       rez => this.products = rez
     );
 
@@ -76,5 +76,9 @@ export class ProductItemComponent implements OnInit {
 
   setQuantity(val: number, i:number) {
     this.products[i].quantity = val;
+  }
+
+  deleteProduct(i:number) {
+    this.productService.deleteProduct(i);
   }
 }

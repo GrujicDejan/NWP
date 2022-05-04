@@ -50,5 +50,20 @@ export class ProductService {
   }
 
 
+  RemoveElementFromStringArray(element: string) {
+    
+  }
+
+  deleteProduct(index: number) : Observable<Product[]>{
+
+    let element: Product = this.products[index];
+
+    this.products.forEach((value,index)=>{
+      if(value==element) 
+        this.products.splice(index,1);
+    });
+
+    return of(this.products);
+  }
 
 }

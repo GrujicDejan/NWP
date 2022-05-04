@@ -21,6 +21,9 @@
                     <button *ngIf="product.quantity > 0" (click)="decreaseQuantity(i)">-</button>
                     <span>{{product.quantity}}</span>
                     <button (click)="increaseQuantity(i)">+</button>
+                    <div style="width: auto;">
+                        <button (click)="deleteProduct(i)">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
