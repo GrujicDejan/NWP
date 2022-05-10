@@ -49,17 +49,12 @@ export class ProductService {
     return of(productClone);
   }
 
-
-  RemoveElementFromStringArray(element: string) {
-    
-  }
-
   deleteProduct(index: number) : Observable<Product[]>{
 
     let element: Product = this.products[index];
 
     this.products.forEach((value,index)=>{
-      if(value==element) 
+      if(value===element) 
         this.products.splice(index,1);
     });
 
