@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product } from '../products/model/product';
@@ -9,56 +10,25 @@ export class ProductService {
 
   private products!: Product[];
 
-  constructor() { 
+  host = 'http://localhost:3000/'
 
-    this.products = [];
-
-    this.products.push({
-      name: "Dog food",
-      imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-      price: 300,
-      isOnSale: true,
-      quantity: 0
-    })
-    this.products.push({
-      name: "Dog food 2",
-      imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-      price: 500,
-      isOnSale: false,
-      quantity: 0
-    })
-    this.products.push({
-      name: "Dog food 3",
-      imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-      price: 400,
-      isOnSale: true,
-      quantity: 0
-    })
+  constructor(private httpClient: HttpClient) { 
 
   }
 
   getProducts() : Observable<Product[]> {
     console.log("servis: getProducts method is being called");
-    return of(this.products);
+    return this.httpClient.get<Product[]>(this.host + "api/product"); 
   }
 
   createProduct(product: Product) : Observable<any> {
-    let productClone = Object.assign({}, product);
     console.log("servis: createProduct method is being called")
-    this.products.push(product);
-    return of(productClone);
+    return this.httpClient.post(this.host + 'api/product/', product); 
   }
 
-  deleteProduct(index: number) : Observable<Product[]>{
-
-    let element: Product = this.products[index];
-
-    this.products.forEach((value,index)=>{
-      if(value===element) 
-        this.products.splice(index,1);
-    });
-
-    return of(this.products);
+  changeQuantity(id: number, changeInQuantity: number) {
+    console.log("servis: changeQuantity method is being called")
+    return this.httpClient.put(this.host + "api/product/" + id, {changeInQuantity: changeInQuantity});
   }
 
 }

@@ -1,3 +1,4 @@
-<app-product-item></app-product-item>
+<!-- <app-product-item></app-product-item> -->
+<app-product-list #productList></app-product-list>
 <hr>
-<app-create-product></app-create-product>
+<app-create-product (productCreated)="productList.onCreate()"></app-create-product>

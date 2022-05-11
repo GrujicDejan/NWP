@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import {Product} from '../model/product';
 
@@ -11,6 +11,9 @@ export class CreateProductComponent implements OnInit {
 
   message = '';
 
+  @Output()
+  private productCreated: EventEmitter<void> = new EventEmitter();
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -22,7 +25,10 @@ export class CreateProductComponent implements OnInit {
     } else {
       console.log(productForm)
       let product : Product = productForm.value.product;
-      this.productService.createProduct(product);
+      this.productService.createProduct(product).subscribe((res) => {
+        console.log("Product created")
+        this.productCreated.next();
+      });
     }
   }
 

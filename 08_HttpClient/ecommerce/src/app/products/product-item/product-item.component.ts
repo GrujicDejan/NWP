@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../model/product';
+import { ProductQuantityChange } from '../model/product-quantity-change';
 
 @Component({
   selector: 'app-product-item',
@@ -9,76 +11,38 @@ import { Product } from '../model/product';
 })
 export class ProductItemComponent implements OnInit {
 
+  @Input()
   public product!: Product;
-  public product2!: Product;
-  public product3!: Product;
+
+  @Output()
+  private quantityChange: EventEmitter<ProductQuantityChange> = new EventEmitter;
+
+  public products!: Array<Product>;
 
   public quantities!: Array<number>;
-  public products!: Array<Product>
 
   constructor(private productService: ProductService) {
-     this.quantities = [];
-
-    productService.getProducts().subscribe(
-      rez => this.products = rez
-    );
+    this.quantities = [];
 
     for (let i = 1; i <= 20; i++) {
       this.quantities.push(i);
     }
-
-    // this.product = {
-    //   name: "Dog food",
-    //   imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-    //   price: 300,
-    //   isOnSale: true,
-    //   quantity: 0
-    // }
-    // this.product2 = {
-    //   name: "Dog food 2",
-    //   imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-    //   price: 500,
-    //   isOnSale: false,
-    //   quantity: 0
-    // }
-    // this.product3 = {
-    //   name: "Dog food 3",
-    //   imageURL: "https://pngimg.com/uploads/dog_food/dog_food_PNG53.png",
-    //   price: 400,
-    //   isOnSale: true,
-    //   quantity: 0
-    // }
-
-    // this.products = [];
-    // this.products.push(this.product);
-    // this.products.push(this.product2);
-    // this.products.push(this.product3);
-
   }
 
   ngOnInit(): void {
 
   }
 
-  increaseQuantity(i:number) {
-    this.products[i].quantity++;
+  increaseQuantity() {
+    this.quantityChange.emit({product: this.product, changeInQuantity: 1});
   }
 
-  decreaseQuantity(i:number) {
-    if (this.products[i].quantity > 0) {
-      this.products[i].quantity--;
-    }
+  decreaseQuantity() {
+    this.quantityChange.emit({product: this.product, changeInQuantity: -1});
   }
 
-  // setQuantity(val:any, i:number) {
-  //   this.product.quantity = val.value;
+  // setQuantity(id:number, value:number) {
+  //   this.quantityChange.emit({product: this.product, changeInQuantity: value});
   // }
 
-  setQuantity(val: number, i:number) {
-    this.products[i].quantity = val;
-  }
-
-  deleteProduct(i:number) {
-    this.productService.deleteProduct(i);
-  }
 }
