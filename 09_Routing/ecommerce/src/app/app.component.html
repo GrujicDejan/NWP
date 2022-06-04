@@ -1,10 +1,27 @@
-<!-- <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
+<div class="container">
+
+    <div class="links">
+        <span> 
+            <a routerLink="/login"routerLinkActive="active">Login </a>
+        </span>
+        <span> 
+            <a routerLink="/regiter"routerLinkActive="active">Register </a>
+        </span>
+        <span> 
+            <a routerLink="/product/list"routerLinkActive="active">Product List </a>
+        </span>
+        <span> 
+            <a routerLink="/product/create"routerLinkActive="active">Create a product</a>
+        </span>
+    </div>
+
+</div>
 
 <hr>
 
-<h1>
-    E-Commerce Portal
-</h1>
-<app-product-list #productList></app-product-list>
-<hr />
-<app-create-product (productCreated)="productList.onCreate()"></app-create-product>
+<div class="container">
+
+
+    <router-outlet></router-outlet>
+</div>
+

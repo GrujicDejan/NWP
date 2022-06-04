@@ -11,7 +11,19 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
 import { CreateProductComponent } from './products/create-product/create-product.component';
 import { ProductService } from './services/product.service';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoginComponent } from './user/login/login.component';
+import { UserService } from './services/user.service';
+import { RegisterComponent } from './user/register/register.component';
+import { TokenInterceptor } from './services/token-interceptor';
+import { AuthGuard } from './guards/auth.guard';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 @NgModule({
@@ -21,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     ProductDetailsComponent,
     CreateProductComponent,
+    LoginComponent,
+    RegisterComponent,
     
   ],
   imports: [
@@ -28,9 +42,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSliderModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, UserService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
