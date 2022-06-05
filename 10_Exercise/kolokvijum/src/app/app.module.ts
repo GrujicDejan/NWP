@@ -12,6 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
+import { SkillService } from './services/skill.service';
+import { UserService } from './services/user.service';
+import { TokenInterceptor } from './services/token-interceptor';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -32,7 +36,7 @@ import { RegisterComponent } from './user/register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SkillService, UserService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

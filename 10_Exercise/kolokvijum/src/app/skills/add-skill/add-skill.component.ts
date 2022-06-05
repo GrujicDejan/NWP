@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Skill } from 'src/app/model/skill';
+import { SkillService } from 'src/app/services/skill.service';
 
 @Component({
   selector: 'app-add-skill',
@@ -8,12 +9,12 @@ import { Skill } from 'src/app/model/skill';
 })
 export class AddSkillComponent {
 
-
   public message = '';
-  constructor() { }
+  constructor(private skillService: SkillService) { }
 
   createSkill(skillForm) {
-
+    const skill = skillForm.value.skill;
+    return this.skillService.addSkill(skill).subscribe((res) => alert('Created'));
   }
 
 }

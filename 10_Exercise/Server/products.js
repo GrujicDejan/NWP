@@ -23,7 +23,7 @@ const products = [
     id: 3,
     name: 'Skill 3',
     imageUrl: 'http://via.placeholder.com/150x150',
-   isExceptional: true,
+    isExceptional: true,
     rating: 10,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet risus nullam eget felis eget nunc lobortis mattis. Nunc lobortis mattis aliquam faucibus purus in massa. Adipiscing bibendum est ultricies integer. Sit amet cursus sit amet dictum sit amet. Ullamcorper a lacus vestibulum sed. Odio euismod lacinia at quis risus sed vulputate odio. Aenean vel elit scelerisque mauris pellentesque. In fermentum et sollicitudin ac. Tempus imperdiet nulla malesuada pellentesque. Ultrices sagittis orci a scelerisque purus semper eget. Eu tincidunt tortor aliquam nulla facilisi cras. Aliquet risus feugiat in ante metus dictum at tempor commodo. Est placerat in egestas erat imperdiet sed euismod. Sem et tortor consequat id porta nibh. Mauris vitae ultricies leo integer malesuada nunc vel risus. Lectus sit amet est placerat in. Convallis aenean et tortor at risus. Velit egestas dui id ornare arcu odio ut sem. Non enim praesent elementum facilisis leo.'
   }

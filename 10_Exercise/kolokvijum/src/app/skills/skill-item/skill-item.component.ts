@@ -9,19 +9,24 @@ import { SkillRatingChange } from 'src/app/model/skill-rating-change';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkillItemComponent {
+ 
+  @Input() 
+  public skill!: Skill;
+  
+  @Output() 
+  ratingChange: EventEmitter<SkillRatingChange> = new EventEmitter();
 
-  skill: Skill;
-  quantityChange: any;
+  ngOnInit() {}
 
   constructor() { }
 
   incrementInCart() {
-    this.quantityChange.emit({skill: this.skill, changeInRating: 1});
+    this.ratingChange.emit({skill: this.skill, changeInRating: 1})
   }
 
   decrementInCart() {
     if (this.skill.rating > 0) {
-      this.quantityChange.emit({skill: this.skill, changeInRating: -1});
+      this.ratingChange.emit({skill: this.skill, changeInRating: -1});
     }
   }
 
