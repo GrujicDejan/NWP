@@ -1,0 +1,66 @@
+<div class="container">
+    <h2>Enter movie info</h2>
+    <form #form="ngForm" (ngSubmit)="addMovie()" class="mb-5">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="name" class="form-label">Movie name</label>
+                <input type="text" class="form-control" id="name" placeholder="Movie name" #name="ngModel" name="name"
+                    [(ngModel)]="movieInfo.name">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="year" class="form-label">Year released</label>
+                <input type="number" class="form-control" id="year" placeholder="Year released" #year="ngModel"
+                    name="year" [(ngModel)]="movieInfo.year">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="imageUrl" placeholder="Image URL" #imageUrl="ngModel"
+                    name="imageUrl" [(ngModel)]="movieInfo.imageUrl">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country" placeholder="Country" #country="ngModel"
+                    name="country" [(ngModel)]="movieInfo.country">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="imdbLink" class="form-label">IMDB Link</label>
+                <input type="text" class="form-control" id="imdbLink" placeholder="IMDB Link" #imdbLink="ngModel"
+                    name="imdbLink" [(ngModel)]="movieInfo.imdbLink">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="wikipedia" class="form-label">Wikipedia</label>
+                <input type="text" class="form-control" id="wikipedia" placeholder="Wikipedia" #wikipedia="ngModel"
+                    name="wikipedia" [(ngModel)]="movieInfo.wikipedia">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="number" class="form-control" id="rating" placeholder="Rating" #rating="ngModel" [max]="10"
+                    [min]="1" name="rating" [(ngModel)]="movieInfo.rating" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="summary" class="form-label">summary</label>
+                <textarea type="text" class="form-control" id="summary" placeholder="summary" #summary="ngModel"
+                    name="summary" [(ngModel)]="movieInfo.summary"></textarea>
+            </div>
+        </div>
+        <div class="row" *ngFor="let char of movieInfo.characters; let i = index">
+            <div class="col-md-6 mb-3">
+                <label for="charName{{i}}" class="form-label">Character {{i}}</label>
+                <input type="text" class="form-control" id="charName{{i}}" placeholder="Character" name="charName{{i}}"
+                    [(ngModel)]="char.name">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="playedBy{{i}}" class="form-label">Played by</label>
+                <input type="text" class="form-control" id="playedBy{{i}}" placeholder="PlayedBy" name="playedBy{{i}}"
+                    [(ngModel)]="char.playedBy">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Add</button>
+    </form>
+</div>

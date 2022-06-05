@@ -1,0 +1,10 @@
+<div>
+    <input type="text" placeholder="Search movies" name="searchBox" [(ngModel)]="searchTerm" (keyup)="search()" />
+</div>
+
+<!-- treba napraviti input i output, emitere-->
+<!-- input je bas taj film i uglaste zagrade -->
+<!-- output je onNesto... i metoda koja se poziva-->
+<app-movie-item  *ngFor="let movie of movies$ | async">
+
+</app-movie-item>
