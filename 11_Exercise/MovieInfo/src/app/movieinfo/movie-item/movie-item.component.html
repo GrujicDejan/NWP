@@ -1,32 +1,35 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>{{movie.name}} ({{movie.year}})</h2>
-            <a [href]="movie.wikipedia">{{movie.wikipedia}}</a>
+    <mat-card>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>{{movie.name}} ({{movie.year}})</h2>
+                <a [href]="movie.wikipedia">{{movie.wikipedia}}</a>
+            </div>
+            <div class="col-md-4" style="text-align: right;">
+                <img [src]="movie.imageUrl" />
+            </div>
         </div>
-        <div class="col-md-4">
-            <img [src]="movie.imageUrl" />
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{movie.summary}}</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p>{{movie.summary}}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Cast</h2>
+                <span *ngFor="let char of movie.characters">{{char.name}} - {{char.playedBy}}<br></span>
+                <p>{{movie.rating}}</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Cast</h2>
-            <span *ngFor="let char of movie.characters">{{char.name}} - {{char.playedBy}}<br></span>
-            <p>{{movie.rating}}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <strong>country of origin</strong><br>
+                <span>{{movie.country}}</span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <strong>country of origin</strong><br>
-            <span>{{movie.country}}</span>
+        <div class="row">
+            <a [href]="movie.imdbLink" type="button" class="btn btn-light">IMDB</a>
         </div>
-    </div>
-    <div class="row">
-        <a [href]="movie.imdbLink" type="button" class="btn btn-light">IMDB</a>
-    </div>
+    </mat-card>
+    <br>
 </div>

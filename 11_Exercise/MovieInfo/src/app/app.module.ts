@@ -14,6 +14,12 @@ import { UserService } from './services/user.service';
 import { TokenInterceptor } from './services/token-interceptor';
 import { MovieService } from './services/movie.service';
 import { AuthGuard } from './guard/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +34,11 @@ import { AuthGuard } from './guard/auth.guard';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [UserService, MovieService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
