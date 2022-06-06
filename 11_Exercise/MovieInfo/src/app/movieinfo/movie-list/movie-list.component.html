@@ -5,6 +5,6 @@
 <!-- treba napraviti input i output, emitere-->
 <!-- input je bas taj film i uglaste zagrade -->
 <!-- output je onNesto... i metoda koja se poziva-->
-<app-movie-item  *ngFor="let movie of movies$ | async">
+<app-movie-item [movie]="movie" (ratingChange)="onRatingChange($event)" *ngFor="let movie of movies$ | async">
 
 </app-movie-item>
