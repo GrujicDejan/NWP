@@ -15,7 +15,6 @@ import { RegisterComponent } from './user/register/register.component';
 import { SkillService } from './services/skill.service';
 import { UserService } from './services/user.service';
 import { TokenInterceptor } from './services/token-interceptor';
-import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -36,7 +35,7 @@ import { AuthGuard } from './guard/auth.guard';
     FormsModule,
     HttpClientModule
   ],
-  providers: [SkillService, UserService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [SkillService, UserService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

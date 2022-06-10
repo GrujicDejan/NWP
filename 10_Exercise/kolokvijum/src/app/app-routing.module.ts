@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { AddSkillComponent } from './skills/add-skill/add-skill.component';
 import { SkillListComponent } from './skills/skill-list/skill-list.component';
 import { LoginComponent } from './user/login/login.component';

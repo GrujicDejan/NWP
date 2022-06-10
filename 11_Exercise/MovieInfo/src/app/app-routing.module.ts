@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { AddMovieComponent } from './movieinfo/add-movie/add-movie.component';
 import { MovieListComponent } from './movieinfo/movie-list/movie-list.component';
 import { LoginComponent } from './user/login/login.component';

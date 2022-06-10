@@ -16,7 +16,6 @@ import { LoginComponent } from './user/login/login.component';
 import { UserService } from './services/user.service';
 import { RegisterComponent } from './user/register/register.component';
 import { TokenInterceptor } from './services/token-interceptor';
-import { AuthGuard } from './guards/auth.guard';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -50,7 +49,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatButtonModule
   ],
-  providers: [ProductService, UserService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+  providers: [ProductService, UserService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

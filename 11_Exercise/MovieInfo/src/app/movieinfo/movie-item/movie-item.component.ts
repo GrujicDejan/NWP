@@ -29,7 +29,7 @@ export class MovieItemComponent implements OnInit {
 
   decrementInCart() {
     if (this.movie.rating > 0) {
-      this.ratingChange.emit({movie: this.movie, changeInRating: 1});
+      this.ratingChange.emit({movie: this.movie, changeInRating: -1});
     }
   }
 
